@@ -5,23 +5,6 @@
 # Versão: Streamlit 1.28.0+, LangChain 0.1.0+
 # AI_GENERATED_CODE_END
 
-# Solução para problema de SQLite3 no Streamlit Cloud
-import sys
-import subprocess
-import pkg_resources
-
-# Verificar e instalar pysqlite3-binary se necessário
-try:
-    import pysqlite3
-    sys.modules['sqlite3'] = pysqlite3
-except ImportError:
-    try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "pysqlite3-binary"])
-        import pysqlite3
-        sys.modules['sqlite3'] = pysqlite3
-    except:
-        pass
-
 import os
 import tempfile
 import pandas as pd
