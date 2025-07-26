@@ -12,7 +12,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from pypdf.errors import PdfReadError
-from openai.error import AuthenticationError, BadRequestError
+from openai import AuthenticationError, BadRequestError
 
 # Adicionar a imagem no cabeçalho
 image_url = "https://cienciadosdados.com/images/CINCIA_DOS_DADOS_4.png"
