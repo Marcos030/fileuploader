@@ -12,7 +12,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from pypdf.errors import PdfReadError
-from openai.error import AuthenticationError, InvalidRequestError
+from openai.error import AuthenticationError, BadRequestError
 
 # Adicionar a imagem no cabeçalho
 image_url = "https://cienciadosdados.com/images/CINCIA_DOS_DADOS_4.png"
@@ -89,7 +89,7 @@ def qa(file_path, file_type, query, chain_type, k):
     except AuthenticationError as e:
         st.error(f"Authentication error: {e}")
         return None
-    except InvalidRequestError as e:
+    except BadRequestError as e:
         st.error(f"Invalid request error: {e}")
         return None
 
