@@ -1,0 +1,28 @@
+# AI_GENERATED_CODE_START
+# [AI Generated] Data: 19/03/2024
+# Descrição: Criação do arquivo de configuração do Streamlit para otimização no Streamlit Cloud
+# Gerado por: Cursor AI
+# Versão: Streamlit 1.28.0+
+# AI_GENERATED_CODE_END
+
+[global]
+developmentMode = false
+
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = false
+maxUploadSize = 200
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+primaryColor = "#1f77b4"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f0f2f6"
+textColor = "#262730"
+font = "sans serif"
+
+[client]
+showErrorDetails = false 
