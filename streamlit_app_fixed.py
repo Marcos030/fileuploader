@@ -1,28 +1,17 @@
 # AI_GENERATED_CODE_START
 # [AI Generated] Data: 19/03/2024
-# Descrição: Atualização do streamlit_app.py para resolver problema de compatibilidade do SQLite3
+# Descrição: Criação de versão alternativa do streamlit_app.py com solução robusta para SQLite3
 # Gerado por: Cursor AI
 # Versão: Streamlit 1.28.0+, LangChain 0.1.0+
 # AI_GENERATED_CODE_END
 
 # Solução para problema de SQLite3 no Streamlit Cloud
-import sys
-import subprocess
-import pkg_resources
-
-# Verificar e instalar pysqlite3-binary se necessário
-try:
-    import pysqlite3
-    sys.modules['sqlite3'] = pysqlite3
-except ImportError:
-    try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "pysqlite3-binary"])
-        import pysqlite3
-        sys.modules['sqlite3'] = pysqlite3
-    except:
-        pass
-
 import os
+import sys
+
+# Configurar variável de ambiente para usar pysqlite3
+os.environ['CHROMA_DB_IMPL'] = 'duckdb+parquet'
+
 import tempfile
 import pandas as pd
 import pytesseract
@@ -260,8 +249,12 @@ def process_question(file_path, file_type, query, chain_type, k, chunk_size, chu
         # Criar embeddings
         embeddings = OpenAIEmbeddings()
         
-        # Criar vectorstore
-        db = Chroma.from_documents(texts, embeddings)
+        # Criar vectorstore com configuração específica para evitar problemas de SQLite3
+        db = Chroma.from_documents(
+            texts, 
+            embeddings,
+            persist_directory=None  # Não persistir para evitar problemas de SQLite3
+        )
         
         # Configurar retriever
         retriever = db.as_retriever(
